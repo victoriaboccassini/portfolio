@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing for Equity: Pediatric Standing Frame | Viki Boccassini</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #4169E1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        /* Key Outcome Box */
+        .key-outcome {
+            background: #4169E1;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            font-size: 22px;
+            line-height: 1.7;
+            margin-bottom: 60px;
+        }
+
+        .key-outcome-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* Project Overview */
+        .project-overview {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 4px solid #4169E1;
+        }
+
+        .project-overview h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .project-overview p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Why Section */
+        .why-items {
+            display: grid;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .why-item {
+            border-left: 4px solid #4169E1;
+            padding-left: 25px;
+        }
+
+        .why-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .why-item p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Methods */
+        .methods {
+            display: grid;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .method-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .method-card h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .method-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .method-why {
+            font-style: italic;
+            color: #4169E1;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .method-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .method-finding {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #4169E1;
+        }
+
+        .method-finding strong {
+            color: #333;
+        }
+
+        /* Impact */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .impact-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .impact-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .impact-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Insights */
+        .insights-list {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .insight-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px 20px 20px 45px;
+            position: relative;
+        }
+
+        .insight-item:before {
+            content: "→";
+            position: absolute;
+            left: 20px;
+            font-size: 20px;
+            color: #4169E1;
+            font-weight: bold;
+        }
+
+        .insight-item strong {
+            color: #1a1a1a;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            background: #e9ecef;
+            border-radius: 12px;
+            padding: 60px 40px;
+            text-align: center;
+            color: #666;
+            margin: 40px 0;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Reflection */
+        .reflection {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reflection h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .reflection p {
+            color: #856404;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">← Back to Projects</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Designing for Equity:<br>Affordable Medical Devices for Low-Resource Contexts</h1>
+        <p>Pediatric Standing Frame Research | Hospital Posadas, Buenos Aires | 2008</p>
+    </div>
+
+    <div class="container">
+        <!-- Key Outcome -->
+        <div class="key-outcome">
+            <div class="key-outcome-label">KEY OUTCOME</div>
+            <div>Functional standing frame prototype designed for small/medium-scale production in hospital's maker-space, enabling affordable rehabilitation devices for pediatric patients with neurological conditions</div>
+        </div>
+
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="project-overview">
+                <h3>Project Overview</h3>
+                <p>Partnership between University of Buenos Aires and Hospital Nacional Profesor Alejandro Posadas—a high-complexity national public hospital (#10 QS Latin America) providing free care across Buenos Aires Province. Many low-income pediatric patients with cerebral palsy lack access to rehabilitation devices, compromising their health outcomes. The hospital commissioned the university to address this gap through in-house manufacturing capability.</p>
+            </div>
+        </section>
+
+        <!-- Image Placeholder -->
+        <div class="image-placeholder">
+            [Insert hero image: Child using the standing frame at Hospital Posadas]
+        </div>
+
+        <!-- Why -->
+        <section class="section">
+            <h2 class="section-title">Why This Project?</h2>
+            <div class="why-items">
+                <div class="why-item">
+                    <h3>Inequitable Access to Rehabilitation</h3>
+                    <p>Hospital Posadas serves a large patient population across Buenos Aires Province, including suburban and rural areas. Many low-income pediatric patients lacked access to rehabilitation services and medical devices—commercial standing frames were financially out of reach for families earning minimum wage.</p>
+                </div>
+                <div class="why-item">
+                    <h3>High Device Abandonment Rates</h3>
+                    <p>Even when families obtained devices, abandonment was common. Therapists reported that difficulty of use by single caregivers and poor fit to home environments led families to stop using devices despite clinical benefits.</p>
+                </div>
+                <div class="why-item">
+                    <h3>Clinical-Only Design Paradigm</h3>
+                    <p>Existing solutions designed for institutional settings ignored home realities and children's emotional/social needs. Commercial devices were bulky, institutional-looking equipment with no consideration for family life, spatial constraints, or child experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Methods -->
+        <section class="section">
+            <h2 class="section-title">Research Methods</h2>
+            <div class="methods">
+                <div class="method-card">
+                    <h3>Expert Interviews</h3>
+                    <div class="method-subtitle">5 healthcare professionals | Moderated, semi-structured</div>
+                    <div class="method-why">Why this method:</div>
+                    <p class="method-description">Needed clinical requirements AND real-world adoption barriers before designing. Healthcare professionals prescribe these devices and observe long-term usage patterns and abandonment factors.</p>
+                    <div class="method-finding">
+                        <strong>Key finding:</strong> Difficulty in device placement by single caregiver is #1 reason for abandonment, even when clinically beneficial
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3>Caregiver Interviews + Site Visits</h3>
+                    <div class="method-subtitle">3 primary caregivers | Hospital + 1 home visit | Moderated</div>
+                    <div class="method-why">Why this method:</div>
+                    <p class="method-description">Caregivers are the actual operators of the device. Site visits (including one home visit) revealed environmental constraints and daily reality that couldn't be captured in hospital interviews alone.</p>
+                    <div class="method-finding">
+                        <strong>Key finding:</strong> 4x3m living spaces with entire family meant portability/storage was as critical as clinical efficacy—common trap in medical device design is prioritizing clinical needs over home realities
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3>Observational Research</h3>
+                    <div class="method-subtitle">Pediatric patients at Hospital Posadas</div>
+                    <div class="method-why">Why this method:</div>
+                    <p class="method-description">Children couldn't participate in interviews due to verbal/cognitive limitations from neurological conditions. Observation was the only method to understand their interaction with the device and social integration needs.</p>
+                    <div class="method-finding">
+                        <strong>Key finding:</strong> Children's need for 360° visibility and play capability while standing was critical for peer interaction—purely clinical designs miss the social development aspect
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Placeholder -->
+        <div class="image-placeholder">
+            [Insert images: Prototype details, testing sessions, design iterations]
+        </div>
+
+        <!-- Key Insights -->
+        <section class="section">
+            <h2 class="section-title">Key Insights → Design Requirements</h2>
+            <div class="insights-list">
+                <div class="insight-item">
+                    <strong>Single caregiver operates alone:</strong> Simplify placement mechanism, reduce physical effort required
+                </div>
+                <div class="insight-item">
+                    <strong>Commercial devices unaffordable:</strong> Design for low-cost, small-scale manufacturing—significantly cheaper than market alternatives
+                </div>
+                <div class="insight-item">
+                    <strong>Extreme spatial constraints (4x3m homes):</strong> Collapsible design, compact storage, doorway-width footprint
+                </div>
+                <div class="insight-item">
+                    <strong>Institutional aesthetic inappropriate for homes:</strong> Child-friendly design with warm appearance vs. bulky medical equipment
+                </div>
+                <div class="insight-item">
+                    <strong>Children need social integration:</strong> 360° visibility, integrated play/activity surface at peer eye-level
+                </div>
+                <div class="insight-item">
+                    <strong>Caregiver burnout common:</strong> Prioritize ease of use over additional clinical features to prevent abandonment
+                </div>
+                <div class="insight-item">
+                    <strong>Personalized medical requirements:</strong> Adjustable, modular components for different pathologies
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="section">
+            <h2 class="section-title">Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <h3>Clinical Validation</h3>
+                    <p>Prototype met all therapeutic requirements validated by 5 healthcare professionals at Hospital Posadas</p>
+                </div>
+                <div class="impact-card">
+                    <h3>User Testing Success</h3>
+                    <p>3 caregivers successfully operated device independently during testing—primary success metric</p>
+                </div>
+                <div class="impact-card">
+                    <h3>Low-Cost, Small-Scale Manufacturing</h3>
+                    <p>Design feasible for small-batch production in hospital's maker-space—no industrial-scale manufacturing required. Estimated 60-70% lower cost than commercial alternatives.</p>
+                </div>
+                <div class="impact-card">
+                    <h3>Context Adaptation</h3>
+                    <p>Single-caregiver operation and home environment adaptation resulted in immediate family interest and willingness to adopt the device—addressing the primary abandonment barrier</p>
+                </div>
+                <div class="impact-card">
+                    <h3>Child-Centered Design</h3>
+                    <p>Higher acceptance from children—caregivers observed increased cooperation during therapy sessions due to the approachable, less intimidating appearance</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="section">
+            <h2 class="section-title">Reflection & Learnings</h2>
+            <div class="reflection">
+                <h3>What Worked Well</h3>
+                <p>Starting with expert interviews gave us clinical grounding before user research. The home visit was invaluable—seeing the actual 4x3m space completely changed our design priorities.</p>
+                
+                <h3>What I'd Do Differently</h3>
+                <p>More caregiver interviews (we only had 3) and longitudinal observation following families over weeks would reveal usage patterns we couldn't see in single sessions.</p>
+                
+                <h3>Methodological Decision I'm Most Proud Of</h3>
+                <p>Doing extensive contextual research on housing and socioeconomic factors prevented us from creating a "clinically perfect" solution that would fail in real homes—a common trap in medical device design.</p>
+            </div>
+        </section>
+
+        <!-- Back to Projects -->
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="index.html" style="display: inline-block; background: #4169E1; color: white; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: 600;">← Back to All Projects</a>
+        </div>
+    </div>
+</body>
+</html>
