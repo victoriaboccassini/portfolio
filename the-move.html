@@ -381,6 +381,11 @@
             section#appendix div[style*="grid-template-columns: repeat(3, 1fr)"] {
                 grid-template-columns: 1fr !important;
             }
+
+            /* Make wireframes 1 column on mobile */
+            section#wireframes div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -588,12 +593,13 @@
                     Based on multiple findings and insights we develop some low fidelity wireframes
                 </p>
 
-                <div class="img-placeholder">
-                    [Wireframe Images: Comparison feature + Natural language search interface + Property detail view]<br><br>
-                    The search is by tenants to decide the flat of placement of amenities<br>
-                    Map | Google Map API<br><br>
-                    "Flat / confidential information, this wireframes has been simplified from original ones"
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <img src="images/the-move/Low_Fidelity_Wireframe_1-_The_Move.jpg" alt="Wireframe 1 - Comparison feature" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <img src="images/the-move/Low_Fidelity_Wireframe_2_-_The_Move.jpg" alt="Wireframe 2 - AI natural language search" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                 </div>
+                <p style="margin-top: 15px; font-size: 13px; color: #999; font-style: italic; text-align: center;">
+                    Flat / confidential information, this wireframes has been simplified from original ones
+                </p>
             </section>
 
             <!-- APPENDIX -->
@@ -698,9 +704,7 @@
                 <!-- Service Blueprint -->
                 <div class="appendix-section">
                     <h4>Service Blueprint</h4>
-                    <div class="img-placeholder" style="margin-top: 15px; min-height: 250px;">
-                        [Image: Complete service blueprint showing tenant-landlord journey with frontstage, backstage, and support processes]
-                    </div>
+                    <img src="images/the-move/Service_Blueprint_The_Move.png" alt="Service Blueprint - The Move tenant-landlord journey" style="width: 100%; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                 </div>
 
                 <!-- Research Operations -->
