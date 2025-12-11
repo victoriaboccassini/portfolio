@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Move | Viki Boccassini</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-nav a {
+            color: #4169E1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .hero-note {
+            font-size: 14px;
+            font-style: italic;
+            opacity: 0.85;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        /* Layout */
+        .case-study-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            width: 240px;
+            height: fit-content;
+            padding: 20px;
+            margin-right: 40px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 10px 15px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .sidebar-link:hover {
+            color: #4169E1;
+            background: #f8f9fa;
+            border-left-color: #4169E1;
+        }
+
+        .sidebar-link.active {
+            color: #4169E1;
+            background: #e7f1ff;
+            border-left-color: #4169E1;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 0 40px 80px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 30px 0 15px 0;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Blue Box */
+        .blue-box {
+            background: #4169E1;
+            color: white;
+            padding: 35px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .blue-box-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .blue-box-content {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* Lists */
+        ul.bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.bullet-list li {
+            padding: 6px 0;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        ul.bullet-list li::before {
+            content: "•";
+            color: #4169E1;
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+        }
+
+        /* Insights Grid */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .insight-card {
+            background: #f1f3f5;
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .insight-card.featured {
+            background: linear-gradient(135deg, #fff9db 0%, #fff3bf 100%);
+            border: 2px solid #ffd93d;
+        }
+
+        .insight-card.featured::after {
+            content: "⭐";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+        }
+
+        .insight-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: #1a1a1a;
+        }
+
+        .insight-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+
+        .insight-evidence {
+            font-size: 13px;
+            color: #666;
+            background: rgba(255,255,255,0.6);
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 12px;
+        }
+
+        .insight-evidence strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .insight-quote {
+            font-style: italic;
+            font-size: 13px;
+            color: #555;
+            margin-top: 12px;
+            padding-left: 15px;
+            border-left: 3px solid #4169E1;
+        }
+
+        .insight-recommendation {
+            font-size: 13px;
+            font-weight: 600;
+            color: #4169E1;
+            margin-top: 12px;
+        }
+
+        /* AI Proposal */
+        .ai-proposal {
+            background: linear-gradient(135deg, #fff9db 0%, #ffe59a 100%);
+            border: 2px solid #ffd93d;
+            border-radius: 12px;
+            padding: 35px;
+            margin-top: 30px;
+        }
+
+        .ai-proposal h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .ai-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin-top: 25px;
+        }
+
+        .ai-column h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .ai-column p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .ai-quotes {
+            margin-top: 15px;
+        }
+
+        .ai-quote {
+            font-style: italic;
+            font-size: 13px;
+            color: #555;
+            margin: 8px 0;
+            padding-left: 12px;
+            border-left: 3px solid #ffa500;
+        }
+
+        .ai-tech {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #ffd93d;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Image Placeholder */
+        .img-placeholder {
+            background: #e9ecef;
+            border-radius: 8px;
+            padding: 60px 30px;
+            text-align: center;
+            color: #adb5bd;
+            font-size: 14px;
+            margin: 30px 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Appendix Sections */
+        .appendix-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .appendix-section h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .appendix-section p, .appendix-section ul {
+            font-size: 14px;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .case-study-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: static;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
+                background: #f8f9fa;
+                border-radius: 8px;
+                display: flex;
+                overflow-x: auto;
+            }
+
+            .sidebar-link {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                white-space: nowrap;
+            }
+
+            .sidebar-link.active {
+                border-bottom-color: #4169E1;
+            }
+
+            .main-content {
+                padding: 0 20px 60px 20px;
+            }
+
+            .insights-grid,
+            .ai-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Nav -->
+    <nav class="top-nav">
+        <a href="index.html">← Back to Projects</a>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-note">Due to confidential information, this case uses an artificial name</div>
+        <h1>THE MOVE</h1>
+    </div>
+
+    <!-- Main Container -->
+    <div class="case-study-container">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="#overview" class="sidebar-link active">Overview</a>
+            <a href="#insights" class="sidebar-link">Key Insights</a>
+            <a href="#ai-proposal" class="sidebar-link">AI Proposal</a>
+            <a href="#wireframes" class="sidebar-link">Wireframes</a>
+            <a href="#appendix" class="sidebar-link">Appendix</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- OVERVIEW -->
+            <section id="overview" class="section">
+                <div class="blue-box">
+                    <div class="blue-box-label">PRIMARY RESEARCH GOAL</div>
+                    <div class="blue-box-content">
+                        Identify critical gaps in The Move's current user experience that are hindering conversion and retention of tenants and landlords, and discover systemic opportunities for improvement across the end-to-end journey.
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">Research Methodologies Used</h3>
+                <ul class="bullet-list">
+                    <li>Secondary research</li>
+                    <li>1 heuristic evaluation</li>
+                    <li>1 competitive analysis</li>
+                    <li>10 task-based usability tests + 12 semi-structured user interviews (7 tenants, 5 landlord)</li>
+                    <li>Data review (existing platform data)</li>
+                    <li>3 cross-functional workshops (Marketing, Engineering, Operations, Support, Content teams)</li>
+                </ul>
+
+                <h3 class="subsection-title">Deliverables</h3>
+                <ul class="bullet-list">
+                    <li>1 Research Report</li>
+                    <li>1 Service blueprint (end-to-end tenant-landlord journey)</li>
+                    <li>1 Final presentation (Prioritized insights + Recommendations + Low fidelity wire frames)</li>
+                </ul>
+
+                <h3 class="subsection-title">Toolkit</h3>
+                <div class="img-placeholder">
+                    [Images: User interviews platform | Airtable | Figjam | Recording tool]
+                    <br>15 people reached, 8 interviews done | Internal Organization | Interviews analysis + Blueprint
+                </div>
+            </section>
+
+            <!-- KEY INSIGHTS -->
+            <section id="insights" class="section">
+                <h2 class="section-title">KEY Insights</h2>
+
+                <div class="insights-grid">
+                    <!-- Insight 1 -->
+                    <div class="insight-card">
+                        <h3 class="insight-title">Users cannot efficiently compare multiple apartment listings</h3>
+                        <p class="insight-text">
+                            The platform displays one listing at a time, forcing users to open multiple tabs and rely on memory to compare 3-5 finalist apartments. This memory-dependent task increases cognitive load and can lead to decision fatigue or choosing based on incomplete information.
+                        </p>
+                        <div class="insight-evidence">
+                            <strong>Evidence:</strong>
+                            • 6/8 users in usability testing opened 3+ browser tabs simultaneously, each showing a different apartment listing<br>
+                            • Analytics data shows 45% of sessions involve users having 3+ apartment listings open at the same time.
+                        </div>
+                        <div class="insight-quote">
+                            "I made a spreadsheet with all the details because I couldn't keep track"
+                        </div>
+                        <div class="insight-recommendation">
+                            → Build side-by-side comparison feature for up to 3 apartments showing key attributes in unified table format.
+                        </div>
+                    </div>
+
+                    <!-- Insight 2 -->
+                    <div class="insight-card">
+                        <h3 class="insight-title">Technical Debt Erodes Trust at Critical Moments</h3>
+                        <p class="insight-text">
+                            Users experience technical friction (slow uploads, buggy chat) at the highest-commitment moments (document submission, contacting landlords). In a marketplace built on trust for high-stakes transactions, technical glitches signal unreliability and may cause users to question if the platform can be trusted.
+                        </p>
+                        <div class="insight-evidence">
+                            <strong>Evidence:</strong>
+                            • In-house document upload and chat systems have capacity/performance issues.<br>
+                            • Engineering reports scalability constraints.
+                        </div>
+                        <div class="insight-recommendation">
+                            → Replace in-house solutions DocuSign (documents) and Salesforce/Intercom (communication) to improve reliability.
+                        </div>
+                    </div>
+
+                    <!-- Insight 3 -->
+                    <div class="insight-card">
+                        <h3 class="insight-title">Manual Processes Create Bi-Directional Anxiety</h3>
+                        <p class="insight-text">
+                            In a competitive rental market, manual processes create delays that generate anxiety in tenants (fear of losing apartment) and frustration in landlords (repetitive work). This bi-directional friction damages satisfaction on both sides and positions The Move as a slow intermediary rather than a value-adding facilitator.
+                        </p>
+                        <div class="insight-evidence">
+                            <strong>Evidence:</strong>
+                            • Document verification takes 24-48hrs (manual review).<br>
+                            • 5/8 tenants reported anxiety about "losing the apartment" during delays.<br>
+                            • Landlords frustrated by repetitive questions.
+                        </div>
+                        <div class="insight-recommendation">
+                            → Automate verification with instant background checks API, add instant confirmation messages, implement FAQ bot, and add application status tracking.
+                        </div>
+                    </div>
+
+                    <!-- Insight 4 - FEATURED -->
+                    <div class="insight-card featured">
+                        <h3 class="insight-title">Natural Language Gap Between Search Intent and Tools</h3>
+                        <p class="insight-text">
+                            There's a fundamental mismatch between how tenants conceptualize their ideal living space (lifestyle, feeling, experience) and how the platform enables search (rigid, technical). This forces users to translate their desires into filters that can't capture nuance, resulting in missed matches and excessive browsing time.
+                        </p>
+                        <div class="insight-evidence">
+                            <strong>Evidence:</strong>
+                            • Tenants describe ideal apartments experientially ("bright, open space with nature views") but platform offers only technical filters (bedrooms, sqft, checkboxes).
+                        </div>
+                        <div class="insight-quote">
+                            "I want a flat with big windows"
+                        </div>
+                        <div class="insight-recommendation">
+                            → Implement "The Move +" AI-powered natural language search for tenants + auto feature extraction from photos for landlords.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI PROPOSAL -->
+            <section id="ai-proposal" class="section">
+                <h2 class="section-title">The Move - AI powered proposal</h2>
+
+                <div class="ai-proposal">
+                    <div class="ai-columns">
+                        <!-- Tenant Experience -->
+                        <div class="ai-column">
+                            <h4>Tenant experience</h4>
+                            <p>
+                                In our pursuit of enhancing the tenant experience, we recognize the tremendous potential of harnessing artificial intelligence. By implementing advanced techniques like data augmentation and feature extraction, we can revolutionize the way users search for their ideal rental properties.
+                            </p>
+                            <p>
+                                The innovative approach allows tenants to describe their ideal apartment without being confined by traditional classifications. This approach empowers tenants to express their preferences in their own words, leading to more nuanced and tailored search results. By utilizing AI algorithms, we can analyze these descriptions, extract relevant features, and skyrocket the likelihood of matching users with their desired properties.
+                            </p>
+                            <div class="ai-quotes">
+                                <div class="ai-quote">"I want a flat with big windows"</div>
+                                <div class="ai-quote">"I would love an apartment on a high floor where I can see a big portion of the river"</div>
+                                <div class="ai-quote">"I want tall ceilings"</div>
+                            </div>
+                        </div>
+
+                        <!-- Landlord Experience -->
+                        <div class="ai-column">
+                            <h4>Landlord experience</h4>
+                            <p>
+                                Exploring the concept of non-traditional categorization. When landlords upload apartment photos, AI algorithms can generate unconventional categories using feature extraction without the need of manually labeling all the features.
+                            </p>
+                            <p>
+                                With landlord's consent "The move" can capture unique property attributes that may not fit within conventional classifications, saving a huge amount of time, obviating them the need to describe one by one each feature/characteristic of the flat.
+                            </p>
+                            <div class="img-placeholder" style="margin-top: 20px; min-height: 150px;">
+                                [Image: AI extracting features from apartment photo]<br>
+                                Sea view → Balcony → Features
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-tech">
+                        <strong>If you would like to pursue this enhanced experience you will need to hire:</strong><br>
+                        +data scientist | +data engineer | +prompt engineer
+                    </div>
+                </div>
+            </section>
+
+            <!-- WIREFRAMES -->
+            <section id="wireframes" class="section">
+                <h2 class="section-title">Low fidelity Wireframes</h2>
+                <p style="margin-bottom: 20px; color: #666;">
+                    Based on multiple findings and insights we develop some low fidelity wireframes
+                </p>
+
+                <div class="img-placeholder">
+                    [Wireframe Images: Comparison feature + Natural language search interface + Property detail view]<br><br>
+                    The search is by tenants to decide the flat of placement of amenities<br>
+                    Map | Google Map API<br><br>
+                    "Flat / confidential information, this wireframes has been simplified from original ones"
+                </div>
+            </section>
+
+            <!-- APPENDIX -->
+            <section id="appendix" class="section">
+                <h2 class="section-title">Appendix</h2>
+
+                <h3 style="font-size: 24px; margin-bottom: 20px; font-weight: 600;">Research process</h3>
+                <div style="background: #e3f2fd; padding: 15px 20px; border-radius: 8px; margin-bottom: 30px;">
+                    <strong style="color: #1565c0;">Discover</strong>
+                </div>
+
+                <!-- Secondary Research -->
+                <div class="appendix-section">
+                    <h4>Secondary Research</h4>
+                    <p><strong>Why I decided to use it?</strong></p>
+                    <ul class="bullet-list">
+                        <li>Time constraints required leveraging existing documentation (SOPs, process maps, journey maps) for baseline understanding</li>
+                        <li>More efficient than conducting new research for already-documented operational processes</li>
+                    </ul>
+                    <div class="img-placeholder" style="margin-top: 15px; min-height: 120px;">
+                        [Image: Documents and process maps]
+                    </div>
+                </div>
+
+                <!-- Heuristic Evaluation -->
+                <div class="appendix-section">
+                    <h4>Heuristic evaluation</h4>
+                    <p><strong>Why I decided to use it?</strong></p>
+                    <ul class="bullet-list">
+                        <li>Identify what were the main pain points quickly</li>
+                        <li>Establish baseline of obvious problems before involving users</li>
+                        <li>Connect with internal UX team as I was working as an external consultant</li>
+                    </ul>
+                    <div class="img-placeholder" style="margin-top: 15px; min-height: 120px;">
+                        [Image: Heuristic evaluation process]
+                    </div>
+                </div>
+
+                <!-- Competitive Analysis -->
+                <div class="appendix-section">
+                    <h4>Competitive analysis</h4>
+                    <p><strong>Why I decided to use it?</strong></p>
+                    <ul class="bullet-list">
+                        <li>There was a document about competitors, but not a proper benchmark. This artifact help me to set user expectations</li>
+                        <li>Identify which features are "table stakes" vs. differentiation opportunities</li>
+                    </ul>
+                    <div class="img-placeholder" style="margin-top: 15px; min-height: 120px;">
+                        [Image: Top 8 Home Rental Apps of 2024]
+                    </div>
+                </div>
+
+                <!-- Usability Testing -->
+                <div class="appendix-section">
+                    <h4>Usability Testing</h4>
+                    <p><strong>Why I decided to use it?</strong></p>
+                    <ul class="bullet-list">
+                        <li>Observe actual behavior and capture workarounds users have normalized</li>
+                        <li>We ran usability testing before interviews in the same 60-minute session due to time constraints, though ideally these would be separate sessions</li>
+                    </ul>
+                    <div class="img-placeholder" style="margin-top: 15px; min-height: 120px;">
+                        [Image: Usability testing session screenshot]
+                    </div>
+                </div>
+
+                <!-- Semi-structured Interviews -->
+                <div class="appendix-section">
+                    <h4>Semi-structured interviews</h4>
+                    <p><strong>Why I decided to use it?</strong></p>
+                    <ul class="bullet-list">
+                        <li>Chose semi-structured over structured interviews to maintain flexibility and follow unexpected themes as they emerged, that was the case of users spontaneously describing apartments using experiential language!</li>
+                    </ul>
+                    <div class="img-placeholder" style="margin-top: 15px; min-height: 120px;">
+                        [Image: Interview session]
+                    </div>
+                </div>
+
+                <!-- Data Review -->
+                <div class="appendix-section">
+                    <h4>Data review (Datadog)</h4>
+                    <p><strong>Why I decided to use it?</strong></p>
+                    <ul class="bullet-list">
+                        <li>Provided objective data to triangulate with interview findings</li>
+                        <li>Demonstrated scale of impact for prioritization decisions when recommendations were done</li>
+                    </ul>
+                    <div class="img-placeholder" style="margin-top: 15px; min-height: 120px;">
+                        [Image: Datadog analytics dashboard]
+                    </div>
+                </div>
+
+                <!-- DELIVERABLES -->
+                <h3 style="font-size: 24px; margin-top: 60px; margin-bottom: 20px; font-weight: 600;">Deliverables</h3>
+                <p style="margin-bottom: 30px; color: #666;">
+                    Throughout the 8-week research process, I created comprehensive documentation and visual artifacts to communicate findings and facilitate stakeholder alignment, as well as operational documents to manage participant recruiting, scheduling, and research logistics
+                </p>
+
+                <!-- Service Blueprint -->
+                <div class="appendix-section">
+                    <h4>Service Blueprint</h4>
+                    <div class="img-placeholder" style="margin-top: 15px; min-height: 250px;">
+                        [Image: Complete service blueprint showing tenant-landlord journey with frontstage, backstage, and support processes]
+                    </div>
+                </div>
+
+                <!-- Research Operations -->
+                <div class="appendix-section">
+                    <h4>Research Operations</h4>
+                    <div class="img-placeholder" style="margin-top: 15px; min-height: 250px;">
+                        [Images: Sprint planning documents | Interview schedules | Recruitment tracker | Airtable organization | Analysis frameworks]
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active link on scroll
+        const sections = document.querySelectorAll('.section');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        function updateActiveLink() {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 150) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        window.addEventListener('load', updateActiveLink);
+    </script>
+</body>
+</html>

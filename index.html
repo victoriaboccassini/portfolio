@@ -201,7 +201,6 @@
         <header>
             <h1>Projects</h1>
             <div class="subtitle">UX Research · Service Design · Strategic Facilitation</div>
-            <div style="font-size: 14px; color: #888; margin-top: 10px;">💡 Tip: Click multiple filters to combine skills</div>
         </header>
 
         <!-- Filters -->
@@ -221,6 +220,7 @@
                 <div class="filter-label">Industry</div>
                 <div class="filter-buttons" id="industry-filters">
                     <button class="filter-btn active" data-filter-type="industry" data-filter="all">All Industries</button>
+                    <button class="filter-btn" data-filter-type="industry" data-filter="real-estate">Real Estate</button>
                     <button class="filter-btn" data-filter-type="industry" data-filter="healthcare">Healthcare</button>
                     <button class="filter-btn" data-filter-type="industry" data-filter="fintech">Fintech</button>
                     <button class="filter-btn" data-filter-type="industry" data-filter="banking">Banking</button>
@@ -229,12 +229,32 @@
             </div>
         </div>
 
-        <div class="results-count" id="results-count">Showing 4 projects</div>
+        <div class="results-count" id="results-count">Showing 5 projects</div>
 
         <!-- Projects Grid -->
         <div class="projects-grid" id="projects-grid">
             
-            <!-- Project 1: Hospital Posadas -->
+            <!-- Project 1: The Move -->
+            <div class="project-card" data-skills="ux-research service-design" data-industry="real-estate" data-year="2024">
+                <div class="project-image">
+                    [Insert illustration of apartment search/rental]
+                </div>
+                <div class="project-content">
+                    <div class="project-title">The Move: Apartment Search Platform</div>
+                    <div class="project-client">Confidential Client</div>
+                    <div class="project-tags">
+                        <span class="tag skill">UX Research</span>
+                        <span class="tag skill">Service Design</span>
+                        <span class="tag industry">Real Estate</span>
+                        <span class="tag year">2024</span>
+                    </div>
+                    <div class="project-outcome">
+                        Identified 5 critical experience gaps through comprehensive 8-week research audit and designed AI-powered natural language search solution
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Hospital Posadas -->
             <div class="project-card" data-skills="ux-research industrial-design" data-industry="healthcare" data-year="2008">
                 <div class="project-image">
                     [Insert photo of pediatric standing frame in use]
@@ -414,6 +434,8 @@
                 // Navigate to project pages
                 if (title === 'Pediatric Standing Frame') {
                     window.location.href = 'hospital-posadas.html';
+                } else if (title === 'The Move: Apartment Search Platform') {
+                    window.location.href = 'the-move.html';
                 } else {
                     // For now, other projects just log
                     console.log('Clicked project:', title);
