@@ -209,48 +209,4 @@
         @media (max-width: 1024px) {
             .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 40px;
-            }
-            
-            .project-image {
-                height: 200px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Projects</h1>
-            <div class="subtitle">UX Research · Service Design · Strategic Facilitation</div>
-        </header>
-
-        <div class="filters">
-            <div class="filter-section">
-                <div class="filter-label">Expertise</div>
-                <div class="filter-buttons" id="skill-filters">
-                    <button class="filter-btn active" data-filter-type="skill" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter-type="skill" data-filter="ux-research">UX Research</button>
-                    <button class="filter-btn" data-filter-type="skill" data-filter="service-design">Service Design</button>
-                    <button class="filter-btn" data-filter-type="skill" data-filter="facilitation">Facilitation</button>
-                    <button class="filter-btn" data-filter-type="skill" data-filter="industrial-design">Industrial Design</button>
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <div class="filter-label">Industry</div>
-                <div class="filter-buttons" id="industry-filters">
-                    <button class="filter-btn active" data-filter-type="industry" data-filter="all">All Industries</button>
-                    <button class="filter-btn" data-filter-type="industry" data-filter="real-estate">Real Estate</button>
-                    <button class="filter-btn" data-filter-type="industry" data-filter="healthcare">Healthcare</button>
-                    <button class="filter-btn" data-filter-type="industry" data-filter="fintech">Fintech</button>
+                gap: 3
