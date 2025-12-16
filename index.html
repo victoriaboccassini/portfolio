@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viki's Portfolio - Project Index</title>
     <style>
+        /* Nuevo Estilo: Modern Clarity - Acento en Naranja Brillante */
+        :root {
+            --primary-color: #FF5722; /* Naranja Brillante */
+            --background-color: #fcfcfc;
+            --text-dark: #212529;
+            --text-medium: #495057;
+            --card-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Sombra más pronunciada */
+            --filter-active-bg: #fff3e0;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,9 +23,9 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: #f8f9fa;
-            padding: 40px 20px;
-            color: #333;
+            background: var(--background-color);
+            padding: 50px 20px;
+            color: var(--text-dark);
         }
 
         .container {
@@ -24,106 +34,100 @@
         }
 
         header {
-            margin-bottom: 50px; /* Increased spacing for a cleaner look */
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef; /* Separador sutil */
         }
 
         h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #1a1a1a;
+            font-size: 52px;
+            font-weight: 800; /* Más audaz */
+            margin-bottom: 5px;
+            color: var(--text-dark);
+            letter-spacing: -1px;
         }
 
         .subtitle {
-            font-size: 18px;
-            color: #666;
-            /* margin-bottom removed, moved to header */
+            font-size: 20px;
+            color: var(--text-medium);
         }
 
         /* Filters */
         .filters {
             background: white;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 16px; /* Bordes más redondeados */
             margin-bottom: 40px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
         }
 
         .filter-section {
-            margin-bottom: 20px;
-        }
-
-        .filter-section:last-child {
-            margin-bottom: 0;
+            margin-bottom: 25px;
         }
 
         .filter-label {
-            font-size: 12px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #888;
-            margin-bottom: 12px;
-            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--text-medium);
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .filter-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .filter-btn {
-            padding: 8px 20px;
-            border: 2px solid #e0e0e0;
+            padding: 10px 25px;
+            border: 1px solid #ced4da;
             background: white;
-            border-radius: 20px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            color: #666;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--text-medium);
         }
 
         .filter-btn:hover {
-            border-color: #4169E1;
-            color: #4169E1;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
         }
 
-        /* MODIFICATION: Softer active state */
         .filter-btn.active {
-            background: #e7f5ff; /* Lightest blue background */
-            border-color: #4169E1;
-            color: #4169E1; /* Blue text on light blue */
+            background: var(--filter-active-bg);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(255,87,34,0.2);
         }
 
         /* Project Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px; /* Espacio mayor entre tarjetas */
         }
 
         .project-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-        }
-
-        .project-card.hidden {
-            display: none;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
 
         .project-image {
             width: 100%;
-            height: 240px;
+            height: 280px; /* Imagen más alta */
             background: #e9ecef;
             display: flex;
             align-items: center;
@@ -132,67 +136,94 @@
             font-size: 14px;
             text-align: center;
             padding: 20px;
+            overflow: hidden; /* Asegurar que la imagen no se desborde */
+        }
+        
+        /* Estilo para imágenes dentro de la tarjeta */
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
         }
 
         .project-content {
-            padding: 24px;
+            padding: 30px;
         }
 
         .project-title {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: 800;
             margin-bottom: 8px;
-            color: #1a1a1a;
+            color: var(--text-dark);
         }
 
         .project-client {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 16px;
+            font-size: 16px;
+            color: var(--text-medium);
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .tag {
-            padding: 4px 12px;
-            background: #f1f3f5;
-            border-radius: 12px;
-            font-size: 12px;
-            color: #495057;
-            font-weight: 500;
-        }
-
-        .tag.skill { background: #e7f5ff; color: #1971c2; }
-        .tag.industry { background: #fff3bf; color: #e67700; }
-        .tag.year { background: #f3f0ff; color: #7950f2; }
-
-        .project-outcome {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #666;
-            border-left: 3px solid #4169E1;
-            padding-left: 12px;
-        }
-
-        .results-count {
-            font-size: 14px;
-            color: #868e96;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
+        .tag {
+            padding: 6px 14px;
+            background: #f1f3f5;
+            border-radius: 14px;
+            font-size: 13px;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+
+        /* Colores temáticos para tags */
+        .tag.skill { background: #e0f2f1; color: #00897b; } /* Verde/Teal */
+        .tag.industry { background: #ffe0b2; color: #e65100; } /* Naranja suave */
+        .tag.year { background: #f3e5f5; color: #8e24aa; } /* Violeta */
+
+        .project-outcome {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-medium);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            margin-top: 15px;
+        }
+
+        .results-count {
+            font-size: 16px;
+            color: var(--text-medium);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr;
             }
             
             h1 {
-                font-size: 36px;
+                font-size: 40px;
+            }
+            
+            .project-image {
+                height: 200px;
             }
         }
     </style>
@@ -223,220 +254,3 @@
                     <button class="filter-btn" data-filter-type="industry" data-filter="real-estate">Real Estate</button>
                     <button class="filter-btn" data-filter-type="industry" data-filter="healthcare">Healthcare</button>
                     <button class="filter-btn" data-filter-type="industry" data-filter="fintech">Fintech</button>
-                    <button class="filter-btn" data-filter-type="industry" data-filter="banking">Banking</button>
-                    <button class="filter-btn" data-filter-type="industry" data-filter="education">Education</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="results-count" id="results-count">Showing 5 projects</div>
-
-        <div class="projects-grid" id="projects-grid">
-            
-            <div class="project-card" data-skills="ux-research service-design" data-industry="real-estate" data-year="2024">
-                <div class="project-image">
-                    <img src="images/the-move/hero-illustration.png" alt="The Move apartment rental illustration" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="project-content">
-                    <div class="project-title">The Move: Apartment Search Platform</div>
-                    <div class="project-client">Confidential Client</div>
-                    <div class="project-tags">
-                        <span class="tag skill">UX Research</span>
-                        <span class="tag skill">Service Design</span>
-                        <span class="tag industry">Real Estate</span>
-                        <span class="tag year">2024</span>
-                    </div>
-                    <div class="project-outcome">
-                        Identified 5 critical experience gaps through comprehensive 8-week research audit and designed AI-powered natural language search solution
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-skills="ux-research industrial-design" data-industry="healthcare" data-year="2008">
-                <div class="project-image">
-                    [Insert photo of pediatric standing frame in use]
-                </div>
-                <div class="project-content">
-                    <div class="project-title">Pediatric Standing Frame</div>
-                    <div class="project-client">Hospital Nacional Posadas</div>
-                    <div class="project-tags">
-                        <span class="tag skill">UX Research</span>
-                        <span class="tag skill">Industrial Design</span>
-                        <span class="tag industry">Healthcare</span>
-                        <span class="tag year">2008</span>
-                    </div>
-                    <div class="project-outcome">
-                        Functional standing frame prototype designed for small-scale production, enabling affordable rehabilitation devices for pediatric patients
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-skills="facilitation service-design" data-industry="fintech" data-year="2021">
-                <div class="project-image">
-                    [Insert photo of workshop facilitation sessions]
-                </div>
-                <div class="project-content">
-                    <div class="project-title">Re-thinking Workshops</div>
-                    <div class="project-client">Finalis</div>
-                    <div class="project-tags">
-                        <span class="tag skill">Facilitation</span>
-                        <span class="tag skill">Service Design</span>
-                        <span class="tag industry">Fintech</span>
-                        <span class="tag year">2021</span>
-                    </div>
-                    <div class="project-outcome">
-                        Established scalable process innovation methodology that improved user satisfaction by 15% and became a bi-annual company practice
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-skills="ux-research service-design" data-industry="banking" data-year="2023">
-                <div class="project-image">
-                    [Insert photo of digital totem or branch experience]
-                </div>
-                <div class="project-content">
-                    <div class="project-title">Digital Adoption for Retirees</div>
-                    <div class="project-client">Banco Macro (via Globant)</div>
-                    <div class="project-tags">
-                        <span class="tag skill">UX Research</span>
-                        <span class="tag skill">Service Design</span>
-                        <span class="tag industry">Banking</span>
-                        <span class="tag year">2023</span>
-                    </div>
-                    <div class="project-outcome">
-                        20% increase in digital totem usage and 2% increase in homebanking adoption across 42 branches through service design research
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-skills="facilitation service-design" data-industry="education" data-year="2020">
-                <div class="project-image">
-                    [Insert photo of strategic planning workshop]
-                </div>
-                <div class="project-content">
-                    <div class="project-title">Strategic Plan Development</div>
-                    <div class="project-client">Universidad Nacional de Hurlingham</div>
-                    <div class="project-tags">
-                        <span class="tag skill">Facilitation</span>
-                        <span class="tag skill">Service Design</span>
-                        <span class="tag industry">Education</span>
-                        <span class="tag year">2020</span>
-                    </div>
-                    <div class="project-outcome">
-                        Co-facilitated strategic planning process for new public university, aligning stakeholders across government and academic leadership
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        // Filter functionality with multiple selections
-        let activeFilters = {
-            skill: new Set(['all']),
-            industry: new Set(['all'])
-        };
-
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-        const resultsCount = document.getElementById('results-count');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const filterType = this.getAttribute('data-filter-type');
-                const filterValue = this.getAttribute('data-filter');
-
-                // Handle "All" button
-                if (filterValue === 'all') {
-                    // Deactivate all other buttons in category
-                    const categoryButtons = document.querySelectorAll(`[data-filter-type="${filterType}"]`);
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Reset filters for this category
-                    activeFilters[filterType] = new Set(['all']);
-                } else {
-                    // Remove "All" if it was active
-                    const allButton = document.querySelector(`[data-filter-type="${filterType}"][data-filter="all"]`);
-                    allButton.classList.remove('active');
-                    activeFilters[filterType].delete('all');
-
-                    // Toggle this filter
-                    if (activeFilters[filterType].has(filterValue)) {
-                        activeFilters[filterType].delete(filterValue);
-                        this.classList.remove('active');
-                        
-                        // If no filters selected, reactivate "All"
-                        if (activeFilters[filterType].size === 0) {
-                            allButton.classList.add('active');
-                            activeFilters[filterType].add('all');
-                        }
-                    } else {
-                        activeFilters[filterType].add(filterValue);
-                        this.classList.add('active');
-                    }
-                }
-
-                // Filter projects
-                filterProjects();
-            });
-        });
-
-        function filterProjects() {
-            let visibleCount = 0;
-
-            projectCards.forEach(card => {
-                const cardSkills = card.getAttribute('data-skills').split(' ');
-                const cardIndustry = card.getAttribute('data-industry');
-
-                // Check skill match - card must have ALL selected skills
-                let skillMatch = false;
-                if (activeFilters.skill.has('all')) {
-                    skillMatch = true;
-                } else {
-                    // Check if card has all selected skills
-                    const selectedSkills = Array.from(activeFilters.skill);
-                    skillMatch = selectedSkills.every(skill => cardSkills.includes(skill));
-                }
-
-                // Check industry match - card must match ANY selected industry
-                let industryMatch = false;
-                if (activeFilters.industry.has('all')) {
-                    industryMatch = true;
-                } else {
-                    industryMatch = activeFilters.industry.has(cardIndustry);
-                }
-
-                if (skillMatch && industryMatch) {
-                    card.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-
-            // Update results count
-            resultsCount.textContent = `Showing ${visibleCount} project${visibleCount !== 1 ? 's' : ''}`;
-        }
-
-        // Add click handlers to cards
-        projectCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const title = this.querySelector('.project-title').textContent;
-                
-                // Navigate to project pages
-                if (title === 'Pediatric Standing Frame') {
-                    window.location.href = 'hospital-posadas.html';
-                } else if (title === 'The Move: Apartment Search Platform') {
-                    window.location.href = 'the-move.html';
-                } else {
-                    // For now, other projects just log
-                    console.log('Clicked project:', title);
-                    alert('Case study coming soon!');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
