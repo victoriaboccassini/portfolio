@@ -1,0 +1,449 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww28900\viewh15760\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Viki's Portfolio - Project Index</title>\
+    <style>\
+        * \{\
+            margin: 0;\
+            padding: 0;\
+            box-sizing: border-box;\
+        \}\
+\
+        body \{\
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;\
+            background: #f8f9fa;\
+            padding: 40px 20px;\
+            color: #333;\
+        \}\
+\
+        .container \{\
+            max-width: 1400px;\
+            margin: 0 auto;\
+        \}\
+\
+        header \{\
+            margin-bottom: 50px; /* Increased spacing for a cleaner look */\
+        \}\
+\
+        h1 \{\
+            font-size: 48px;\
+            font-weight: 700;\
+            margin-bottom: 10px;\
+            color: #1a1a1a;\
+        \}\
+\
+        .subtitle \{\
+            font-size: 18px;\
+            color: #666;\
+            /* margin-bottom removed, moved to header */\
+        \}\
+\
+        /* Filters */\
+        .filters \{\
+            background: white;\
+            padding: 30px;\
+            border-radius: 12px;\
+            margin-bottom: 40px;\
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);\
+        \}\
+\
+        .filter-section \{\
+            margin-bottom: 20px;\
+        \}\
+\
+        .filter-section:last-child \{\
+            margin-bottom: 0;\
+        \}\
+\
+        .filter-label \{\
+            font-size: 12px;\
+            text-transform: uppercase;\
+            letter-spacing: 1px;\
+            color: #888;\
+            margin-bottom: 12px;\
+            font-weight: 600;\
+        \}\
+\
+        .filter-buttons \{\
+            display: flex;\
+            flex-wrap: wrap;\
+            gap: 10px;\
+        \}\
+\
+        .filter-btn \{\
+            padding: 8px 20px;\
+            border: 2px solid #e0e0e0;\
+            background: white;\
+            border-radius: 20px;\
+            cursor: pointer;\
+            font-size: 14px;\
+            font-weight: 500;\
+            transition: all 0.2s ease;\
+            color: #666;\
+        \}\
+\
+        .filter-btn:hover \{\
+            border-color: #4169E1;\
+            color: #4169E1;\
+        \}\
+\
+        /* MODIFICATION: Softer active state */\
+        .filter-btn.active \{\
+            background: #e7f5ff; /* Lightest blue background */\
+            border-color: #4169E1;\
+            color: #4169E1; /* Blue text on light blue */\
+        \}\
+\
+        /* Project Grid */\
+        .projects-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));\
+            gap: 30px;\
+        \}\
+\
+        .project-card \{\
+            background: white;\
+            border-radius: 12px;\
+            overflow: hidden;\
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);\
+            transition: transform 0.2s ease, box-shadow 0.2s ease;\
+            cursor: pointer;\
+        \}\
+\
+        .project-card:hover \{\
+            transform: translateY(-4px);\
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);\
+        \}\
+\
+        .project-card.hidden \{\
+            display: none;\
+        \}\
+\
+        .project-image \{\
+            width: 100%;\
+            height: 240px;\
+            background: #e9ecef;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            color: #adb5bd;\
+            font-size: 14px;\
+            text-align: center;\
+            padding: 20px;\
+        \}\
+\
+        .project-content \{\
+            padding: 24px;\
+        \}\
+\
+        .project-title \{\
+            font-size: 20px;\
+            font-weight: 700;\
+            margin-bottom: 8px;\
+            color: #1a1a1a;\
+        \}\
+\
+        .project-client \{\
+            font-size: 14px;\
+            color: #666;\
+            margin-bottom: 16px;\
+            font-weight: 500;\
+        \}\
+\
+        .project-tags \{\
+            display: flex;\
+            flex-wrap: wrap;\
+            gap: 8px;\
+            margin-bottom: 16px;\
+        \}\
+\
+        .tag \{\
+            padding: 4px 12px;\
+            background: #f1f3f5;\
+            border-radius: 12px;\
+            font-size: 12px;\
+            color: #495057;\
+            font-weight: 500;\
+        \}\
+\
+        .tag.skill \{ background: #e7f5ff; color: #1971c2; \}\
+        .tag.industry \{ background: #fff3bf; color: #e67700; \}\
+        .tag.year \{ background: #f3f0ff; color: #7950f2; \}\
+\
+        .project-outcome \{\
+            font-size: 14px;\
+            line-height: 1.6;\
+            color: #666;\
+            border-left: 3px solid #4169E1;\
+            padding-left: 12px;\
+        \}\
+\
+        .results-count \{\
+            font-size: 14px;\
+            color: #868e96;\
+            margin-bottom: 20px;\
+        \}\
+\
+        @media (max-width: 768px) \{\
+            .projects-grid \{\
+                grid-template-columns: 1fr;\
+            \}\
+            \
+            h1 \{\
+                font-size: 36px;\
+            \}\
+        \}\
+    </style>\
+</head>\
+<body>\
+    <div class="container">\
+        <header>\
+            <h1>Projects</h1>\
+            <div class="subtitle">UX Research \'b7 Service Design \'b7 Strategic Facilitation</div>\
+        </header>\
+\
+        <div class="filters">\
+            <div class="filter-section">\
+                <div class="filter-label">Expertise</div>\
+                <div class="filter-buttons" id="skill-filters">\
+                    <button class="filter-btn active" data-filter-type="skill" data-filter="all">All Projects</button>\
+                    <button class="filter-btn" data-filter-type="skill" data-filter="ux-research">UX Research</button>\
+                    <button class="filter-btn" data-filter-type="skill" data-filter="service-design">Service Design</button>\
+                    <button class="filter-btn" data-filter-type="skill" data-filter="facilitation">Facilitation</button>\
+                    <button class="filter-btn" data-filter-type="skill" data-filter="industrial-design">Industrial Design</button>\
+                </div>\
+            </div>\
+\
+            <div class="filter-section">\
+                <div class="filter-label">Industry</div>\
+                <div class="filter-buttons" id="industry-filters">\
+                    <button class="filter-btn active" data-filter-type="industry" data-filter="all">All Industries</button>\
+                    <button class="filter-btn" data-filter-type="industry" data-filter="real-estate">Real Estate</button>\
+                    <button class="filter-btn" data-filter-type="industry" data-filter="healthcare">Healthcare</button>\
+                    <button class="filter-btn" data-filter-type="industry" data-filter="fintech">Fintech</button>\
+                    <button class="filter-btn" data-filter-type="industry" data-filter="banking">Banking</button>\
+                    <button class="filter-btn" data-filter-type="industry" data-filter="education">Education</button>\
+                </div>\
+            </div>\
+        </div>\
+\
+        <div class="results-count" id="results-count">Showing 5 projects</div>\
+\
+        <div class="projects-grid" id="projects-grid">\
+            \
+            <div class="project-card" data-skills="ux-research service-design" data-industry="real-estate" data-year="2024">\
+                <div class="project-image">\
+                    <img src="images/the-move/hero-illustration.png" alt="The Move apartment rental illustration" style="width: 100%; height: 100%; object-fit: cover;">\
+                </div>\
+                <div class="project-content">\
+                    <div class="project-title">The Move: Apartment Search Platform</div>\
+                    <div class="project-client">Confidential Client</div>\
+                    <div class="project-tags">\
+                        <span class="tag skill">UX Research</span>\
+                        <span class="tag skill">Service Design</span>\
+                        <span class="tag industry">Real Estate</span>\
+                        <span class="tag year">2024</span>\
+                    </div>\
+                    <div class="project-outcome">\
+                        Identified 5 critical experience gaps through comprehensive 8-week research audit and designed AI-powered natural language search solution\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <div class="project-card" data-skills="ux-research industrial-design" data-industry="healthcare" data-year="2008">\
+                <div class="project-image">\
+                    [Insert photo of pediatric standing frame in use]\
+                </div>\
+                <div class="project-content">\
+                    <div class="project-title">Pediatric Standing Frame</div>\
+                    <div class="project-client">Hospital Nacional Posadas</div>\
+                    <div class="project-tags">\
+                        <span class="tag skill">UX Research</span>\
+                        <span class="tag skill">Industrial Design</span>\
+                        <span class="tag industry">Healthcare</span>\
+                        <span class="tag year">2008</span>\
+                    </div>\
+                    <div class="project-outcome">\
+                        Functional standing frame prototype designed for small-scale production, enabling affordable rehabilitation devices for pediatric patients\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <div class="project-card" data-skills="facilitation service-design" data-industry="fintech" data-year="2021">\
+                <div class="project-image">\
+                    [Insert photo of workshop facilitation sessions]\
+                </div>\
+                <div class="project-content">\
+                    <div class="project-title">Re-thinking Workshops</div>\
+                    <div class="project-client">Finalis</div>\
+                    <div class="project-tags">\
+                        <span class="tag skill">Facilitation</span>\
+                        <span class="tag skill">Service Design</span>\
+                        <span class="tag industry">Fintech</span>\
+                        <span class="tag year">2021</span>\
+                    </div>\
+                    <div class="project-outcome">\
+                        Established scalable process innovation methodology that improved user satisfaction by 15% and became a bi-annual company practice\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <div class="project-card" data-skills="ux-research service-design" data-industry="banking" data-year="2023">\
+                <div class="project-image">\
+                    [Insert photo of digital totem or branch experience]\
+                </div>\
+                <div class="project-content">\
+                    <div class="project-title">Digital Adoption for Retirees</div>\
+                    <div class="project-client">Banco Macro (via Globant)</div>\
+                    <div class="project-tags">\
+                        <span class="tag skill">UX Research</span>\
+                        <span class="tag skill">Service Design</span>\
+                        <span class="tag industry">Banking</span>\
+                        <span class="tag year">2023</span>\
+                    </div>\
+                    <div class="project-outcome">\
+                        20% increase in digital totem usage and 2% increase in homebanking adoption across 42 branches through service design research\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <div class="project-card" data-skills="facilitation service-design" data-industry="education" data-year="2020">\
+                <div class="project-image">\
+                    [Insert photo of strategic planning workshop]\
+                </div>\
+                <div class="project-content">\
+                    <div class="project-title">Strategic Plan Development</div>\
+                    <div class="project-client">Universidad Nacional de Hurlingham</div>\
+                    <div class="project-tags">\
+                        <span class="tag skill">Facilitation</span>\
+                        <span class="tag skill">Service Design</span>\
+                        <span class="tag industry">Education</span>\
+                        <span class="tag year">2020</span>\
+                    </div>\
+                    <div class="project-outcome">\
+                        Co-facilitated strategic planning process for new public university, aligning stakeholders across government and academic leadership\
+                    </div>\
+                </div>\
+            </div>\
+\
+        </div>\
+    </div>\
+\
+    <script>\
+        // Filter functionality with multiple selections\
+        let activeFilters = \{\
+            skill: new Set(['all']),\
+            industry: new Set(['all'])\
+        \};\
+\
+        const filterButtons = document.querySelectorAll('.filter-btn');\
+        const projectCards = document.querySelectorAll('.project-card');\
+        const resultsCount = document.getElementById('results-count');\
+\
+        filterButtons.forEach(button => \{\
+            button.addEventListener('click', function() \{\
+                const filterType = this.getAttribute('data-filter-type');\
+                const filterValue = this.getAttribute('data-filter');\
+\
+                // Handle "All" button\
+                if (filterValue === 'all') \{\
+                    // Deactivate all other buttons in category\
+                    const categoryButtons = document.querySelectorAll(`[data-filter-type="$\{filterType\}"]`);\
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));\
+                    this.classList.add('active');\
+                    \
+                    // Reset filters for this category\
+                    activeFilters[filterType] = new Set(['all']);\
+                \} else \{\
+                    // Remove "All" if it was active\
+                    const allButton = document.querySelector(`[data-filter-type="$\{filterType\}"][data-filter="all"]`);\
+                    allButton.classList.remove('active');\
+                    activeFilters[filterType].delete('all');\
+\
+                    // Toggle this filter\
+                    if (activeFilters[filterType].has(filterValue)) \{\
+                        activeFilters[filterType].delete(filterValue);\
+                        this.classList.remove('active');\
+                        \
+                        // If no filters selected, reactivate "All"\
+                        if (activeFilters[filterType].size === 0) \{\
+                            allButton.classList.add('active');\
+                            activeFilters[filterType].add('all');\
+                        \}\
+                    \} else \{\
+                        activeFilters[filterType].add(filterValue);\
+                        this.classList.add('active');\
+                    \}\
+                \}\
+\
+                // Filter projects\
+                filterProjects();\
+            \});\
+        \});\
+\
+        function filterProjects() \{\
+            let visibleCount = 0;\
+\
+            projectCards.forEach(card => \{\
+                const cardSkills = card.getAttribute('data-skills').split(' ');\
+                const cardIndustry = card.getAttribute('data-industry');\
+\
+                // Check skill match - card must have ALL selected skills\
+                let skillMatch = false;\
+                if (activeFilters.skill.has('all')) \{\
+                    skillMatch = true;\
+                \} else \{\
+                    // Check if card has all selected skills\
+                    const selectedSkills = Array.from(activeFilters.skill);\
+                    skillMatch = selectedSkills.every(skill => cardSkills.includes(skill));\
+                \}\
+\
+                // Check industry match - card must match ANY selected industry\
+                let industryMatch = false;\
+                if (activeFilters.industry.has('all')) \{\
+                    industryMatch = true;\
+                \} else \{\
+                    industryMatch = activeFilters.industry.has(cardIndustry);\
+                \}\
+\
+                if (skillMatch && industryMatch) \{\
+                    card.classList.remove('hidden');\
+                    visibleCount++;\
+                \} else \{\
+                    card.classList.add('hidden');\
+                \}\
+            \});\
+\
+            // Update results count\
+            resultsCount.textContent = `Showing $\{visibleCount\} project$\{visibleCount !== 1 ? 's' : ''\}`;\
+        \}\
+\
+        // Add click handlers to cards\
+        projectCards.forEach(card => \{\
+            card.addEventListener('click', function() \{\
+                const title = this.querySelector('.project-title').textContent;\
+                \
+                // Navigate to project pages\
+                if (title === 'Pediatric Standing Frame') \{\
+                    window.location.href = 'hospital-posadas.html';\
+                \} else if (title === 'The Move: Apartment Search Platform') \{\
+                    window.location.href = 'the-move.html';\
+                \} else \{\
+                    // For now, other projects just log\
+                    console.log('Clicked project:', title);\
+                    alert('Case study coming soon!');\
+                \}\
+            \});\
+        \});\
+    </script>\
+</body>\
+</html>}
